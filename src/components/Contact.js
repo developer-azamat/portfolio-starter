@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 
-const Contact = () => {
+const Contact = ({ setSubmit }) => {
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmit(true);
+    setTimeout(() => {
+      setSubmit(false);
+    }, 2000);
+    e.target.reset();
+    setMessage("")
+    setName("")
+  };
+
   return (
     <section className="lg:section py-16" id="contact">
       <div className="container mx-auto">
@@ -26,6 +39,7 @@ const Contact = () => {
           </motion.div>
           {/* form */}
           <motion.form
+            onSubmit={handleSubmit}
             variants={fadeIn("left", 0.3)}
             initial="hidden"
             whileInView={"show"}
@@ -33,19 +47,36 @@ const Contact = () => {
             className="flex-1 border rounded-2xl flex flex-col gap-y-6 pb-24 p-6 items-start"
           >
             <input
+              onChange={(e) => {
+                setName(e.target.value);
+                console.log(name);
+              }}
+              required
               type="text"
               className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all"
               placeholder="Your name"
             />
             <input
+              required
               type="text"
               className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all"
               placeholder="Your email"
             />
-            <textarea
-              className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all resize-none mb-12"
+            <input
+              onChange={(e) => {
+                setMessage(e.target.value);
+                console.log(message);
+              }}
+              type="text"
+              required
+              className="bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all resize-none mb-6"
               placeholder="Your message"
-            ></textarea>
+            ></input>
+            <div className="inline bg-white/20 text-cyan-400 font-semibold p-3 rounded-md">
+              {name && <span>I am {name}</span>}
+              {message && <span> and I want {message}</span>}
+            </div>
+            {/* <p>{name.length ? `I am ${name}` : "no name"}</p> */}
             <button className="btn btn-lg ">Send message</button>
           </motion.form>
         </div>

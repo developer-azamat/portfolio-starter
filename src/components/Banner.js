@@ -21,7 +21,7 @@ const Banner = () => {
               viewport={{ once: false, amount: 0.7 }}
               className="text-[55px] leading-[0.8] font-bold lg:text-[90px]"
             >
-              Azamat <span>Azimov</span>
+              Azamatjon <span>Azimov</span>
             </motion.h1>
             <motion.div
               variants={fadeIn("up", 0.4)}
@@ -35,7 +35,7 @@ const Banner = () => {
                 sequence={[
                   "Developer",
                   2000,
-                  "Youtuber",
+                  "Student",
                   2000,
                   "Designer",
                   2000,

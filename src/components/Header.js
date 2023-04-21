@@ -1,15 +1,15 @@
 import React from 'react';
-import Logo from '../assets/logo.svg'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return <header className=' py-8'>
     <div className="container mx-auto">
       <div className='flex items-center justify-between'>
-        <a href="#" className='text-gradient text-2xl uppercase'>
-          aaa_dev
+        <Link to="/" className='text-gradient text-2xl'>
+          A3DEV
           {/* <img src={Logo} alt="" /> */}
-        </a>
-        <button className="btn btn-sm">Work with me</button>
+        </Link>
+        <Link className="btn btn-sm py-4" to='/contact'>Work with me</Link>
       </div>
     </div>
   </header>;
